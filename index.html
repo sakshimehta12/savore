@@ -14,7 +14,6 @@
       rel="stylesheet"
     />
     <style>
-      /* Basic reset for clean design */
       * {
         margin: 0;
         padding: 0;
@@ -22,7 +21,7 @@
         font-family: "Playfair Display", serif;
       }
 
-      /* Styling the navbar */
+      /* Navbar Section */
       nav {
         display: flex;
         justify-content: space-between;
@@ -184,62 +183,10 @@
         padding: 10px;
       }
 
-      /* Initial state for the slogan */
-      .slogan {
-        text-align: center;
-        background-color: #003153;
-        color: beige;
-        padding: 10px 10px;
-        opacity: 0; /* Hidden initially */
-        transform: scale(0.8); /* Slightly smaller to give a pop effect */
-        transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth state reset */
-        border-color: #ffc1cc;
-      }
-
-      .slogan.animate {
-        animation: zoomBounce 1.5s ease-in-out forwards; /* Animation applied */
-      }
-
-      .slogan h1 {
-        font-size: 100px;
-        font-family: "Playfair Display", serif;
-        font-weight: bold;
-        margin: 0;
-        position: relative; /* To position the underline */
-        display: inline-block; /* To make underline wrap text only */
-      }
-
-      /* Underline styling */
-      .slogan h1::after {
-        content: "";
-        display: block;
-        width: 80%; /* Adjust the width of the underline */
-        height: 4px; /* Thickness of the underline */
-        background-color: #ffc1cc; /* Pinkish underline for contrast */
-        margin: 10px auto 0; /* Add spacing */
-        border-radius: 2px; /* Rounded ends for a softer look */
-      }
-
-      /* Animation Keyframes */
-      @keyframes zoomBounce {
-        0% {
-          transform: scale(0.5); /* Start small */
-          opacity: 0; /* Start invisible */
-        }
-        60% {
-          transform: scale(1.2); /* Slightly overshoot the size */
-          opacity: 1; /* Fully visible */
-        }
-        100% {
-          transform: scale(1); /* Final size */
-          opacity: 1; /* Fully visible */
-        }
-      }
-
       /* Search Container positioned on slider */
       .search-container {
         position: absolute;
-        top: 50px; /* Moves the search bar up a bit */
+        top: 50px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -261,6 +208,58 @@
         cursor: pointer;
       }
 
+      /* Slogan Section */
+      .slogan {
+        text-align: center;
+        background-color: #003153;
+        color: beige;
+        padding: 10px 10px;
+        opacity: 0; 
+        transform: scale(0.8); 
+        transition: transform 0.3s ease, opacity 0.3s ease; 
+        border-color: #ffc1cc;
+      }
+
+      .slogan.animate {
+        animation: zoomBounce 1.5s ease-in-out forwards; 
+      }
+
+      .slogan h1 {
+        font-size: 100px;
+        font-family: "Playfair Display", serif;
+        font-weight: bold;
+        margin: 0;
+        position: relative; 
+        display: inline-block; 
+      }
+
+      /* Underline styling */
+      .slogan h1::after {
+        content: "";
+        display: block;
+        width: 80%; 
+        height: 4px; 
+        background-color: #ffc1cc; 
+        margin: 10px auto 0;
+        border-radius: 2px; 
+      }
+
+      /* Animation Keyframes */
+      @keyframes zoomBounce {
+        0% {
+          transform: scale(0.5); 
+          opacity: 0; 
+        }
+        60% {
+          transform: scale(1.2); 
+          opacity: 1; 
+        }
+        100% {
+          transform: scale(1); 
+          opacity: 1; 
+        }
+      }
+
       /* Quotes Section */
       .quotes-section {
         display: flex;
@@ -269,7 +268,7 @@
         background-color: #003153;
         color: beige;
         padding: 60px 40px;
-        gap: 100px; /* Increased space between the images and quotes */
+        gap: 100px; 
       }
 
       /* Styling for Quotes */
@@ -279,7 +278,7 @@
       }
 
       .quote {
-        font-size: 2rem; /* Increased font size for better visibility */
+        font-size: 2rem; 
         font-family: "Playfair Display", serif;
         font-style: italic;
         line-height: 1.6;
@@ -296,10 +295,10 @@
 
       /* Rotating Circular Images */
       .rotating-image {
-        width: 300px; /* Bigger circular images */
+        width: 300px; 
         height: 300px;
         border-radius: 50%;
-        border: 8px solid #ffc1cc; /* Thicker border for larger images */
+        border: 8px solid #ffc1cc; 
         animation: rotate 8s infinite linear;
       }
 
@@ -320,36 +319,36 @@
         align-items: center;
         background-color: #003153;
         padding: 60px 40px;
-        gap: 20px; /* Increased space between top and bottom groups for more elegance */
-        border-top: 10px solid #ffc1cc; /* Added top border for definition */
-        border-bottom: 10px solid #ffc1cc; /* Added bottom border for definition */
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect to make the section pop */
+        gap: 20px; 
+        border-top: 10px solid #ffc1cc; 
+        border-bottom: 10px solid #ffc1cc; 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
       }
 
       /* Dish Groups */
       .dish-group {
         display: flex;
         justify-content: space-between;
-        width: 85%; /* A little more width for the images to look spacious */
-        gap: 10px; /* Increased gap between images for better flow */
-        animation: fadeIn 1s ease-out; /* Animation to make the dishes section more engaging */
+        width: 85%; 
+        gap: 10px; 
+        animation: fadeIn 1s ease-out; 
       }
 
       /* Dish Images */
       .dish-image {
-        width: 32%; /* Slightly increased width for each image to fit well */
-        height: 350px; /* Set a fixed height to make the images consistent */
-        border-radius: 15px; /* Softer rounded corners */
-        border: 6px solid #ffc1cc; /* Border for more definition */
-        object-fit: cover; /* Ensures images are cropped nicely */
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow effect */
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effect for hover */
+        width: 32%; 
+        height: 350px; 
+        border-radius: 15px; 
+        border: 6px solid #ffc1cc; 
+        object-fit: cover; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
       }
 
       /* Dish Image Hover Effects */
       .dish-image:hover {
-        transform: scale(1.1); /* Slight zoom effect on hover */
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow when hovered */
+        transform: scale(1.1); 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
       }
 
       /* Fade-in Animation */
@@ -365,11 +364,10 @@
       }
 
       /* Review Section*/
-      /* Review Carousel Section */
       .review-title {
         font-size: 60px;
         margin-bottom: 30px;
-        color: beige; /* Highlighted color for the title */
+        color: beige; 
         text-align: center;
       }
 
@@ -393,17 +391,17 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        flex: 0 0 33%; /* Each slide takes 33% width of the container */
+        flex: 0 0 33%; 
         text-align: center;
         padding: 10px;
-        opacity: 0; /* Initially hidden */
-        transform: scale(0.9); /* Start with a slightly smaller size */
+        opacity: 0; 
+        transform: scale(0.9); 
       }
 
       .review-image {
         width: 200px;
         height: 200px;
-        border-radius: 50%; /* Circular image */
+        border-radius: 50%; 
         object-fit: cover;
         border: 5px solid #ffc1cc;
         margin-bottom: 20px;
@@ -424,19 +422,17 @@
         margin-top: 10px;
       }
 
-      /* New animation for fade-in and zoom effect */
+      /* Animation for fade-in and zoom effect */
       @keyframes fadeInZoom {
         0% {
           opacity: 0;
-          transform: scale(0.9); /* Start slightly smaller */
+          transform: scale(0.9); 
         }
         100% {
           opacity: 1;
-          transform: scale(1); /* End at normal size */
+          transform: scale(1); 
         }
       }
-
-      /* Add this to the CSS */
 
       .review-slide.animated {
         animation: fadeInZoom 1s ease forwards;
@@ -444,7 +440,7 @@
 
       /* Features Section */
       .features {
-        background-color: #003153; /* Matches overall color scheme */
+        background-color: #003153; 
         padding: 60px 40px;
         border-top: 10px solid #ffc1cc;
         border-bottom: 10px solid #ffc1cc;
@@ -455,7 +451,7 @@
       .features-title {
         font-size: 60px;
         margin-bottom: 30px;
-        color: beige; /* Highlighted color for the title */
+        color: beige; 
       }
 
       .features-row {
@@ -501,18 +497,18 @@
         background-color: #003153;
         padding-top: 40px;
         padding-bottom: 40px;
-        text-align: center; /* This will center all content inside the footer */
+        text-align: center; 
       }
 
       /* CONNECT SOCIALLY Section */
       .connect-socially {
         display: inline-block;
-        border: 3px solid #ffc1cc; /* Pinkish border */
+        border: 3px solid #ffc1cc; 
         padding: 20px 20px;
         border-radius: 30px;
         margin-bottom: 20px;
         background-color: #003153;
-        animation: connectSociallyPulse 2s ease-in-out infinite alternate; /* Pulse effect animation */
+        animation: connectSociallyPulse 2s ease-in-out infinite alternate; 
       }
 
       .connect-socially h2 {
@@ -538,21 +534,21 @@
         color: #ffc1ff;
       }
 
-      /* Animation for Connect Socially pulse effect */
+      /* Animation for pulse effect */
       @keyframes connectSociallyPulse {
         0% {
-          transform: scale(1); /* Normal size */
-          opacity: 0.9; /* Slightly less visible */
+          transform: scale(1); 
+          opacity: 0.9; 
         }
         100% {
-          transform: scale(1.1); /* Slightly larger size */
-          opacity: 1; /* Fully visible */
+          transform: scale(1.1); 
+          opacity: 1; 
         }
       }
 
       /* Copyright Section Styling */
       .copyright-section {
-        background-color: #002338; /* Slightly darker for differentiation */
+        background-color: #002338; 
         padding: 15px;
         text-align: center;
       }
