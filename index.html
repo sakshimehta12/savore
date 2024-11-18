@@ -8,6 +8,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
     <style>
       /* Basic reset for clean design */
       * {
@@ -99,7 +104,7 @@
 
       /* Cart Icon */
       .cart-btn i {
-        margin-right: 10px; /* Smaller space for icon */
+        margin-right: 10px;
         font-size: 20px;
       }
 
@@ -132,7 +137,7 @@
       .hero-slider {
         position: relative;
         width: 100%;
-        height: 100vh; /* Full viewport height */
+        height: 100vh;
         background-size: cover;
         background-position: center;
         color: #ffc1cc;
@@ -141,7 +146,7 @@
       .slider {
         position: relative;
         width: 100%;
-        height: 100%; /* Full height to cover entire section */
+        height: 100%;
         overflow: hidden;
       }
 
@@ -179,17 +184,56 @@
         padding: 10px;
       }
 
-      /* Slogan Section Below Slider */
-      .slogan-section {
+      /* Initial state for the slogan */
+      .slogan {
         text-align: center;
         background-color: #003153;
-        color: white;
-        padding: 40px 20px;
+        color: beige;
+        padding: 10px 10px;
+        opacity: 0; /* Hidden initially */
+        transform: scale(0.8); /* Slightly smaller to give a pop effect */
+        transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth state reset */
+        border-color: #ffc1cc;
       }
 
-      .slogan-section h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
+      .slogan.animate {
+        animation: zoomBounce 1.5s ease-in-out forwards; /* Animation applied */
+      }
+
+      .slogan h1 {
+        font-size: 100px;
+        font-family: "Playfair Display", serif;
+        font-weight: bold;
+        margin: 0;
+        position: relative; /* To position the underline */
+        display: inline-block; /* To make underline wrap text only */
+      }
+
+      /* Underline styling */
+      .slogan h1::after {
+        content: "";
+        display: block;
+        width: 80%; /* Adjust the width of the underline */
+        height: 4px; /* Thickness of the underline */
+        background-color: #ffc1cc; /* Pinkish underline for contrast */
+        margin: 10px auto 0; /* Add spacing */
+        border-radius: 2px; /* Rounded ends for a softer look */
+      }
+
+      /* Animation Keyframes */
+      @keyframes zoomBounce {
+        0% {
+          transform: scale(0.5); /* Start small */
+          opacity: 0; /* Start invisible */
+        }
+        60% {
+          transform: scale(1.2); /* Slightly overshoot the size */
+          opacity: 1; /* Fully visible */
+        }
+        100% {
+          transform: scale(1); /* Final size */
+          opacity: 1; /* Fully visible */
+        }
       }
 
       /* Search Container positioned on slider */
@@ -217,7 +261,309 @@
         cursor: pointer;
       }
 
-      body{
+      /* Quotes Section */
+      .quotes-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #003153;
+        color: beige;
+        padding: 60px 40px;
+        gap: 100px; /* Increased space between the images and quotes */
+      }
+
+      /* Styling for Quotes */
+      .quotes {
+        text-align: center;
+        max-width: 600px;
+      }
+
+      .quote {
+        font-size: 2rem; /* Increased font size for better visibility */
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        line-height: 1.6;
+        margin: 20px 0;
+      }
+
+      /* Left and Right Image Containers */
+      .left-image,
+      .right-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Rotating Circular Images */
+      .rotating-image {
+        width: 300px; /* Bigger circular images */
+        height: 300px;
+        border-radius: 50%;
+        border: 8px solid #ffc1cc; /* Thicker border for larger images */
+        animation: rotate 8s infinite linear;
+      }
+
+      /* Rotating Animation */
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Dishes Section */
+      .dishes-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #003153;
+        padding: 60px 40px;
+        gap: 20px; /* Increased space between top and bottom groups for more elegance */
+        border-top: 10px solid #ffc1cc; /* Added top border for definition */
+        border-bottom: 10px solid #ffc1cc; /* Added bottom border for definition */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect to make the section pop */
+      }
+
+      /* Dish Groups */
+      .dish-group {
+        display: flex;
+        justify-content: space-between;
+        width: 85%; /* A little more width for the images to look spacious */
+        gap: 10px; /* Increased gap between images for better flow */
+        animation: fadeIn 1s ease-out; /* Animation to make the dishes section more engaging */
+      }
+
+      /* Dish Images */
+      .dish-image {
+        width: 32%; /* Slightly increased width for each image to fit well */
+        height: 350px; /* Set a fixed height to make the images consistent */
+        border-radius: 15px; /* Softer rounded corners */
+        border: 6px solid #ffc1cc; /* Border for more definition */
+        object-fit: cover; /* Ensures images are cropped nicely */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow effect */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effect for hover */
+      }
+
+      /* Dish Image Hover Effects */
+      .dish-image:hover {
+        transform: scale(1.1); /* Slight zoom effect on hover */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow when hovered */
+      }
+
+      /* Fade-in Animation */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Review Section*/
+      /* Review Carousel Section */
+      .review-title {
+        font-size: 60px;
+        margin-bottom: 30px;
+        color: beige; /* Highlighted color for the title */
+        text-align: center;
+      }
+
+      .review-carousel {
+        background-color: #003153;
+        padding: 60px 40px;
+        text-align: center;
+        color: beige;
+        position: relative;
+      }
+
+      .carousel-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .review-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex: 0 0 33%; /* Each slide takes 33% width of the container */
+        text-align: center;
+        padding: 10px;
+        opacity: 0; /* Initially hidden */
+        transform: scale(0.9); /* Start with a slightly smaller size */
+      }
+
+      .review-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%; /* Circular image */
+        object-fit: cover;
+        border: 5px solid #ffc1cc;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px #ffc1cc;
+      }
+
+      .review-content p {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        font-style: italic;
+        max-width: 85%;
+        margin: 0 auto;
+      }
+
+      .review-content h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      /* New animation for fade-in and zoom effect */
+      @keyframes fadeInZoom {
+        0% {
+          opacity: 0;
+          transform: scale(0.9); /* Start slightly smaller */
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1); /* End at normal size */
+        }
+      }
+
+      /* Add this to the CSS */
+
+      .review-slide.animated {
+        animation: fadeInZoom 1s ease forwards;
+      }
+
+      /* Features Section */
+      .features {
+        background-color: #003153; /* Matches overall color scheme */
+        padding: 60px 40px;
+        border-top: 10px solid #ffc1cc;
+        border-bottom: 10px solid #ffc1cc;
+        color: white;
+        text-align: center;
+      }
+
+      .features-title {
+        font-size: 60px;
+        margin-bottom: 30px;
+        color: beige; /* Highlighted color for the title */
+      }
+
+      .features-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 60px;
+      }
+
+      .feature-item {
+        background-color: #002338;
+        border-radius: 10px;
+        padding: 60px;
+        width: 300px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .feature-item i {
+        font-size: 3rem;
+        color: beige;
+        margin-bottom: 15px;
+      }
+
+      .feature-item h5 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      .feature-item p {
+        font-size: 1rem;
+        color: #d3d3d3;
+      }
+
+      /* Footer Main Section */
+      footer {
+        background-color: #003153;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        text-align: center; /* This will center all content inside the footer */
+      }
+
+      /* CONNECT SOCIALLY Section */
+      .connect-socially {
+        display: inline-block;
+        border: 3px solid #ffc1cc; /* Pinkish border */
+        padding: 20px 20px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        background-color: #003153;
+        animation: connectSociallyPulse 2s ease-in-out infinite alternate; /* Pulse effect animation */
+      }
+
+      .connect-socially h2 {
+        font-size: 60px;
+        color: white;
+        margin: 0;
+      }
+
+      /* Social Media Icons Section */
+      .social-icons {
+        margin-top: 20px;
+      }
+
+      .social-icon {
+        margin: 0 15px;
+        font-size: 50px;
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .social-icon:hover {
+        color: #ffc1ff;
+      }
+
+      /* Animation for Connect Socially pulse effect */
+      @keyframes connectSociallyPulse {
+        0% {
+          transform: scale(1); /* Normal size */
+          opacity: 0.9; /* Slightly less visible */
+        }
+        100% {
+          transform: scale(1.1); /* Slightly larger size */
+          opacity: 1; /* Fully visible */
+        }
+      }
+
+      /* Copyright Section Styling */
+      .copyright-section {
+        background-color: #002338; /* Slightly darker for differentiation */
+        padding: 15px;
+        text-align: center;
+      }
+
+      .copyright-section p {
+        font-size: 16px;
+        margin: 0;
+        color: white;
+      }
+
+      body {
         background-image: "assets/kitchendoodle.webp";
       }
     </style>
@@ -255,13 +601,13 @@
     <section class="hero-slider">
       <div class="slider">
         <div class="slide active">
-          <img src="assets/hero1.png" alt="Delicious Dish 1" />
+          <img src="assets/one.jpeg" alt="Delicious Dish 1" />
         </div>
         <div class="slide">
-          <img src="assets/hero2.png" alt="Delicious Dish 2" />
+          <img src="assets/two.jpeg" alt="Delicious Dish 2" />
         </div>
         <div class="slide">
-          <img src="assets/hero3.png" alt="Delicious Dish 3" />
+          <img src="assets/three.jpeg" alt="Delicious Dish 3" />
         </div>
       </div>
       <div class="slider-controls">
@@ -281,8 +627,136 @@
     </section>
 
     <!-- Slogan Section -->
-    <section class="slogan-section">
+    <section class="slogan">
       <h1>Savoré Every Bite, Anytime</h1>
+    </section>
+
+    <!--Quote Section-->
+    <section class="quotes-section">
+      <div class="left-image">
+        <img src="assets/pizza.jpg" alt="Pizza" class="rotating-image" />
+      </div>
+
+      <div class="quotes">
+        <p class="quote">
+          "One cannot think well, love well, sleep well, if one has not dined
+          well." - <strong>Virginia Woolf</strong>
+        </p>
+        <p class="quote">
+          "Food is symbolic of love when words are inadequate." -
+          <strong>Alan D. Wolfelt</strong>
+        </p>
+        <p class="quote">
+          "People who love to eat are always the best people." -
+          <strong>Julia Child</strong>
+        </p>
+      </div>
+
+      <div class="right-image">
+        <img src="assets/pasta.jpg" alt="Pasta" class="rotating-image" />
+      </div>
+    </section>
+
+    <section class="dishes-section">
+      <div class="dish-group top-group">
+        <img src="assets/1.jpeg" alt="Dish 1" class="dish-image" />
+        <img src="assets/2.jpeg" alt="Dish 2" class="dish-image" />
+        <img src="assets/3.jpeg" alt="Dish 3" class="dish-image" />
+      </div>
+
+      <div class="dish-group bottom-group">
+        <img src="assets/4.jpeg" alt="Dish 4" class="dish-image" />
+        <img src="assets/5.jpeg" alt="Dish 5" class="dish-image" />
+        <img src="assets/6.jpeg" alt="Dish 6" class="dish-image" />
+      </div>
+    </section>
+
+    <!--Review Section-->
+    <section class="review-carousel">
+      <h2 class="review-title">Reviews</h2>
+      <div class="carousel-container">
+        <div class="review-slide">
+          <img src="assets/nicholas.jpg" alt="Customer 1" class="review-image" />
+          <div class="review-content">
+            <p>
+              "The food here is just amazing! Every bite is pure heaven, and I
+              can't wait to come back. Highly recommended!"
+            </p>
+            <h3>- Nicholas Galitzine</h3>
+          </div>
+        </div>
+
+        <div class="review-slide">
+          <img src="assets/emily.jpg" alt="Customer 2" class="review-image" />
+          <div class="review-content">
+            <p>
+              "Savoré is my go-to place! The dishes are consistently delicious,
+              and the service is always exceptional."
+            </p>
+            <h3>- Emily Cooper</h3>
+          </div>
+        </div>
+
+        <div class="review-slide">
+          <img src="assets/gaberial.jpg" alt="Customer 3" class="review-image" />
+          <div class="review-content">
+            <p>
+              "Absolutely fantastic experience! The ambiance is perfect, and the
+              food never disappoints. Worth every penny!"
+            </p>
+            <h3>- Gabriel Salvatore</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <h2 class="features-title">Our Features</h2>
+        <div class="features-row">
+          <div class="feature-item">
+            <i class="bi bi-truck"></i>
+            <h5>Free Shipping</h5>
+            <br />
+            <h3>
+              Get your favorite meals delivered for free, no hidden costs.
+            </h3>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-shield-check"></i>
+            <h5>Secure Payments</h5>
+            <br />
+            <h3>Experience safe and seamless transactions every time.</h3>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-star"></i>
+            <h5>Top Quality</h5>
+            <br />
+            <h3>We deliver only the best, crafted with care and excellence.</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <section>
+        <div class="connect-socially">
+          <h2>CONNECT SOCIALLY</h2>
+        </div>
+        <div class="social-icons">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </section>
+    </footer>
+
+    <section>
+      <div class="copyright-section">
+        <p>&copy; 2024 Savoré. All rights reserved.</p>
+      </div>
     </section>
 
     <!-- Font Awesome for the cart icon -->
