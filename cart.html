@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  <style>
+     /* Global Styles */
+     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Playfair Display", serif;
+      }
+
+      body {
+        color: black;
+        background-color: #002338; /* Light and inviting background */
+      }
+
+    .cart-container {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 50px;
+      background-color: mistyrose;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .cart-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cart-title h1 {
+      font-size: 2.5rem;
+      color: darkgreen;
+    }
+
+    .cart-items {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .cart-items thead {
+      background-color: lightgray;
+    }
+
+    .cart-items th, .cart-items td {
+      text-align: center;
+      padding: 15px;
+      border: 1px solid lightgray;
+    }
+
+    .cart-items th {
+      font-size: 1.2rem;
+      color: darkblue;
+    }
+
+    .cart-items td {
+      font-size: 1rem;
+    }
+
+    .item-image {
+      width: 200px;
+      border-radius: 5px;
+    }
+
+    .quantity-input {
+      width: 50px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .remove-btn {
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      color: white;
+      background-color: darkred;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      background-color: crimson;
+    }
+
+    .cart-summary {
+      text-align: right;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    .checkout-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background-color: darkgreen;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background-color: forestgreen;
+    }
+
+      .cart-items td, .cart-items th {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      .checkout-btn {
+        font-size: 1rem;
+        padding: 10px;
+      }
+
+      .footer {
+          background-color: #003153;
+          color: white;
+          text-align: center;
+          padding: 10px;
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+        }
+        .footer p {
+          margin: 0;
+        }
+
+        /* Responsive Design */
+    @media (max-width: 768px) {
+      .cart-container {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <div class="cart-title">
+      <h1>Your Cart</h1>
+      <p>Review your items and proceed to checkout.</p>
+    </div>
+
+    <table class="cart-items">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body">
+        <!-- Cart Items Will Be Injected Here -->
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <p>Total: <span id="cart-total">$0.00</span></p>
+    </div>
+
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2024 Savoré. All rights reserved.</p>
+  </div>
+
+  <script>
+    // Sample cart items (can be fetched from a database)
+    const cartItems = [
+      { id: 1, name: "Grilled Chicken", price: 12.99, quantity: 1, image: "assets/chicken.jpeg" },
+      { id: 2, name: "Cheesecake", price: 6.99, quantity: 2, image: "assets/cake.jpeg" }
+    ];
+
+    const cartBody = document.getElementById('cart-body');
+    const cartTotal = document.getElementById('cart-total');
+
+    // Function to render cart items
+    function renderCart() {
+      cartBody.innerHTML = '';
+      let total = 0;
+
+      cartItems.forEach((item) => {
+        const subtotal = (item.price * item.quantity).toFixed(2);
+        total += parseFloat(subtotal);
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><img src="${item.image}" alt="${item.name}" class="item-image"></td>
+          <td>${item.name}</td>
+          <td>$${item.price.toFixed(2)}</td>
+          <td>
+            <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+          </td>
+          <td>$${subtotal}</td>
+          <td>
+            <button class="remove-btn" data-id="${item.id}">Remove</button>
+          </td>
+        `;
+
+        cartBody.appendChild(row);
+      });
+
+      cartTotal.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Function to update item quantity
+    cartBody.addEventListener('input', (e) => {
+      if (e.target.classList.contains('quantity-input')) {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        const item = cartItems.find((item) => item.id === id);
+        if (item) {
+          item.quantity = parseInt(e.target.value) || 1;
+          renderCart();
+        }
+      }
+    });
+
+    // Function to remove item
+    cartBody.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-btn')) {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        const index = cartItems.findIndex((item) => item.id === id);
+        if (index !== -1) {
+          cartItems.splice(index, 1);
+          renderCart();
+        }
+      }
+    });
+
+    // Initial render
+    renderCart();
+  </script>
+</body>
+</html>

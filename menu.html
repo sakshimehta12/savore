@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Playfair Display", serif;
+      }
+
+      body {
+        color: black;
+        background-color: #002338; /* Light and inviting background */
+      }
+
+      /* Navbar Section */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #003153;
+        padding: 15px 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Logo styling */
+      .logo {
+        width: 150px;
+        height: 80px;
+        margin-left: 0;
+        border-radius: 20px;
+      }
+
+      .logo:hover {
+        cursor: pointer;
+        border: 5px solid #ffc1cc;
+      }
+
+      /* Navbar links */
+      .nav-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        font-size: 22px;
+        color: ivory;
+        transition: color 0.3s ease;
+      }
+
+      /* Hover effect for links */
+      .nav-links a:hover {
+        color: #ffc1cc;
+      }
+
+      /* Order Now button */
+      .order-now {
+        background-color: #61cdff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+
+      .order-now:hover {
+        background-color: #ffc1cc;
+      }
+
+      /* Cart Container */
+      .cart-container {
+        display: flex;
+        align-items: center;
+        margin-left: 25px;
+      }
+
+      /* Styling for the cart button */
+      .cart-btn {
+        display: flex;
+        align-items: center;
+        background-color: #61cdff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      /* Cart Icon */
+      .cart-btn i {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      /* Cart icon styling */
+      .cart {
+        font-size: 20px;
+        position: relative;
+        color: #ffc1cc;
+        margin-right: 10px;
+      }
+
+      /* Cart badge for number of items */
+      .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: #ffc1cc;
+        color: white;
+        border-radius: 50%;
+        padding: 3px 7px;
+        font-size: 14px;
+      }
+
+      /* Hover effect */
+      .cart-btn:hover {
+        background-color: #ffc1cc;
+      }
+
+      .menu-container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .menu-title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .menu-title h1 {
+        font-size: 60px;
+        color: beige;
+      }
+
+      .menu-section {
+        margin-bottom: 50px;
+      }
+
+      .menu-section h2 {
+        font-size: 30px;
+        color: beige;
+        margin-bottom: 20px;
+      }
+
+      .menu-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .menu-item {
+        width: 30%;
+        margin-bottom: 20px;
+        border: 2px solid green;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: lightgoldenrodyellow;
+        text-align: left;
+        padding: 15px;
+      }
+
+      .menu-item img {
+        width: 300px;
+        height: 300px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .menu-item h3 {
+        font-size: 1.5rem;
+        color: darkblue;
+        margin-top: 10px;
+      }
+
+      .menu-item p {
+        margin: 10px 0;
+        color: darkgreen;
+      }
+
+      .menu-item .price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: darkred;
+      }
+
+      .order-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        font-size: 16px;
+        color: white;
+        background-color: darkgreen;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .order-btn:hover {
+        background-color: forestgreen;
+      }
+
+      /* Copyright Section Styling */
+      .copyright-section {
+        background-color: #003153; 
+        padding: 15px;
+        text-align: center;
+      }
+
+      .copyright-section p {
+        font-size: 16px;
+        margin: 0;
+        color: white;
+      }
+
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .menu-item {
+          width: 100%;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <!--Nav section-->
+    <nav>
+      <!-- Logo -->
+      <img src="assets/sav.png" alt="Savoré" class="logo" />
+
+      <!-- Navigation Links -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="register.html">Log In/Sign Up</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <!-- Cart and Order Now Button Container -->
+      <div class="cart-container">
+        <!-- Order Now Button -->
+        <a href="order.html" class="order-now">Order Now</a>
+        <!-- Cart Icon -->
+        <div class="cart">
+          <a href="cart.html" class="cart-btn"
+            ><i class="fas fa-shopping-cart"></i> Cart</a
+          >
+          <span class="cart-badge">3</span>
+        </div>
+      </div>
+    </nav>
+    <div class="menu-container">
+      <div class="menu-title">
+        <h1>Our Menu</h1>
+      </div>
+
+      <!-- Appetizers Section -->
+      <div class="menu-section">
+        <h2>Appetizers</h2>
+        <div class="menu-items">
+          <div class="menu-item">
+            <img src="assets/spring roll.jpeg" alt="Spring Rolls" />
+            <h3>Spring Rolls</h3>
+            <p>Crispy rolls stuffed with fresh vegetables.</p>
+            <p class="price">$4.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/bread.jpeg" alt="Garlic Bread" />
+            <h3>Garlic Bread</h3>
+            <p>Toasted bread with garlic and herbs.</p>
+            <p class="price">$3.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img
+              src="assets/burger.jpeg"
+              alt="Burger"
+            />
+            <h3>Burger</h3>
+            <p>Spicy and fresh Burger.</p>
+            <p class="price">$5.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img
+              src="assets/noodles.jpeg"
+              alt="Noodles"
+            />
+            <h3>Noodles</h3>
+            <p>Spicy noodles filled with tangy sauce.</p>
+            <p class="price">$4.49</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/nachos.webp" alt="Nachos" />
+            <h3>Loaded Nachos</h3>
+            <p>Crispy nachos topped with cheese and jalapeños.</p>
+            <p class="price">$6.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/bru.webp" alt="Bruschetta" />
+            <h3>Bruschetta</h3>
+            <p>Grilled bread with tomato and basil topping.</p>
+            <p class="price">$4.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Course Section -->
+      <div class="menu-section">
+        <h2>Main Course</h2>
+        <div class="menu-items">
+          <div class="menu-item">
+            <img
+              src="assets/chicken.jpeg"
+              alt="Grilled Chicken"
+            />
+            <h3>Grilled Chicken</h3>
+            <p>Juicy grilled chicken served with sides.</p>
+            <p class="price">$12.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img
+              src="assets/pasta vera.jpeg"
+              alt="Pasta Primavera"
+            />
+            <h3>Pasta Primavera</h3>
+            <p>Fresh pasta with seasonal vegetables.</p>
+            <p class="price">$10.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/biryani.jpeg" alt="Biryani" />
+            <h3>Biryani</h3>
+            <p>Fresh bowl of rice with spices and lemon.</p>
+            <p class="price">$14.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img
+              src="assets/curry.webp"
+              alt="Vegetable Curry"
+            />
+            <h3>Vegetable Curry</h3>
+            <p>Rich curry with fresh vegetables.</p>
+            <p class="price">$9.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/dosa.jpeg" alt="Dosa" />
+            <h3>Dosa</h3>
+            <p>Perfectly cooked food with different sauces.</p>
+            <p class="price">$15.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/sph.jpeg" alt="Spaghetti" />
+            <h3>Spaghetti</h3>
+            <p>Delicious spaghetti with fresh herbs.</p>
+            <p class="price">$11.49</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desserts Section -->
+      <div class="menu-section">
+        <h2>Desserts</h2>
+        <div class="menu-items">
+          <div class="menu-item">
+            <img src="assets/cake.jpeg" alt="Cheesecake" />
+            <h3>Cheesecake</h3>
+            <p>Classic cheesecake with a buttery crust.</p>
+            <p class="price">$6.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img
+              src="assets/brownie.jpeg"
+              alt="Chocolate Brownie"
+            />
+            <h3>Chocolate Brownie</h3>
+            <p>Rich and fudgy brownie topped with nuts.</p>
+            <p class="price">$5.49</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/tira.jpeg" alt="Tiramisu" />
+            <h3>Tiramisu</h3>
+            <p>Layered dessert with coffee flavor.</p>
+            <p class="price">$7.49</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img
+              src="assets/sundae.webp"
+              alt="Ice Cream Sundae"
+            />
+            <h3>Ice Cream Sundae</h3>
+            <p>Creamy ice cream with toppings.</p>
+            <p class="price">$4.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/tart.jpeg" alt="Fruit Tart" />
+            <h3>Fruit Tart</h3>
+            <p>Fresh tart with seasonal fruits.</p>
+            <p class="price">$6.49</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+          <div class="menu-item">
+            <img src="assets/crepe.webp" alt="Crepes" />
+            <h3>Crepes</h3>
+            <p>Light crepes with chocolate and cream.</p>
+            <p class="price">$5.99</p>
+            <a href="#" class="order-btn">Order Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+        <div class="copyright-section">
+          <p>&copy; 2024 Savoré. All rights reserved.</p>
+        </div>
+      </section>
+  </body>
+</html>
